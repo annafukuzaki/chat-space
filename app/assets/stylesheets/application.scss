@@ -1,2 +1,5 @@
-@import "reset";  /* _reset.scssを読み込む */
-@import "messages";
+@import "./font-awesome-sprockets";
+@import "./font-awesome";
+@import "./reset";  /* _reset.scssを読み込む */
+@import "./main_chat";
+@import "./side_bar";
