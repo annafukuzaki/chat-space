@@ -5,10 +5,11 @@
       .side_bar__box__header__name-icon
         .side_bar__box__header__name-icon__name
           Anna
+          = current_user.name
         .side_bar__box__header__name-icon__logo
           = link_to "#", class: "side_bar__box__header__name-icon__logo__1" do
             = icon('fas', 'edit')
-          = link_to "#", class: "side_bar__box__header__name-icon__logo__1" do
+          = link_to edit_user_path(current_user), class: "side_bar__box__header__name-icon__logo__1" do
             = icon('fas', 'fas fa-cog')
             %br
     .side_bar__box__content
@@ -18,3 +19,4 @@
         .side_bar__box__content__group-message__messageinfo
           まだメッセージはありません。
 
+ 
