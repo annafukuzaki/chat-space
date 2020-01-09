@@ -14,9 +14,9 @@
             %br
     .side_bar__box__content
       - current_user.groups.each do |group|
-      .side_bar__box__content__group-message 
-        = link_to '#' do
-          .side_bar__box__content__group-message__groupname
-            = group.name
-          .side_bar__box__content__group-message__messageinfo
-            まだメッセージはありません。
+        .side_bar__box__content__group-message 
+          = link_to '#' do
+            .side_bar__box__content__group-message__groupname
+              = group.name
+            .side_bar__box__content__group-message__messageinfo
+              まだメッセージはありません。
