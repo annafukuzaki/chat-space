@@ -3,31 +3,17 @@
     .main_chat__box__header
       .main_chat__box__header__leftbox
         .main_chat__box__header__leftbox__group
-          test
+          = @group.name
         .main_chat__box__header__leftbox__member
-          Member Anna
-      .main_chat__box__header__edit
-        Edit
+          = @group.users.name
+      = link_to "Edit", edit_group_path(@group), class: 'main_chat__box__header__edit'
     .main_chat__box__content
-      .main_chat__box__content__message1
-        .main_chat__box__content__message1__name1
-          Anna
-        .main_chat__box__content__message1__date1
-          2019/12/29(Sun) 20:23:33
-      .main_chat__box__content__comment1
-        おはよう
-      .main_chat__box__content__message2
-        .main_chat__box__content__message2__name2
-          Anna
-        .main_chat__box__content__message2__date2
-          2019/12/29(Sun) 21:34:22
-      .main_chat__box__content__comment2
-        今日は夜から雨
+      = render @messages 
     .main_chat__box__footer
       .main_chat__box__footer__postform
-        %input{type: "text", class: "main_chat__box__footer__postform__text", placeholder: "type a message" }
-        %label{class: "main_chat__box__footer__postform__image"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "main_chat__box__footer__postform__image__file"}
-      .main_chat__box__footer__send
-        send
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'main_chat__box__footer__postform__text', placeholder: 'type a message'
+          = f.label :image, class: 'main_chat__box__footer__postform__image' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image, class: 'main_chat__box__footer__postform__image__file'
+          = f.submit 'Send', class: 'main_chat__box__footer__send'

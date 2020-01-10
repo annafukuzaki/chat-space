@@ -4,19 +4,18 @@
     
       .side_bar__box__header__name-icon
         .side_bar__box__header__name-icon__name
-          Anna
           = current_user.name
         .side_bar__box__header__name-icon__logo
-          = link_to "#", class: "side_bar__box__header__name-icon__logo__1" do
+          = link_to new_group_path, class: "side_bar__box__header__name-icon__logo__1" do
             = icon('fas', 'edit')
           = link_to edit_user_path(current_user), class: "side_bar__box__header__name-icon__logo__1" do
             = icon('fas', 'fas fa-cog')
             %br
     .side_bar__box__content
-      .side_bar__box__content__group-message 
-        .side_bar__box__content__group-message__groupname
-          techcamp
-        .side_bar__box__content__group-message__messageinfo
-          まだメッセージはありません。
-
- 
+      - current_user.groups.each do |group|
+        .side_bar__box__content__group-message 
+          = link_to group_messages_path(group) do
+            .side_bar__box__content__group-message__groupname
+              = group.name
+            .side_bar__box__content__group-message__messageinfo
+              = group.show_last_message
