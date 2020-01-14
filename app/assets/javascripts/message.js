@@ -35,27 +35,27 @@ $(function(){
      return html;
    };
  }
-$('#new_message').on('submit', function(e){
- e.preventDefault();
- var formData = new FormData(this);
- var url = $(this).attr('action')
- $.ajax({
-   url: url,
-   type: "POST",
-   data: formData,
-   dataType: 'json',
-   processData: false,
-   contentType: false
- })
-  .done(function(data){
-    var html = buildHTML(data);
-    $('.main_chat__box__content').append(html);  
-    $('.main_chat__box__content').animate({ scrollTop: $('.main_chat__box__content')[0].scrollHeight});
-    $('form')[0].reset();
-    $('.main_chat__box__footer__send').prop('disabled', false)
+  $('#new_message').on('submit', function(e){
+    e.preventDefault();
+    var formData = new FormData(this);
+    var url = $(this).attr('action')
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(data){
+      var html = buildHTML(data);
+      $('.main_chat__box__content').append(html);  
+      $('.main_chat__box__content').animate({ scrollTop: $('.main_chat__box__content')[0].scrollHeight});
+      $('form')[0].reset();
+      $('.main_chat__box__footer__send').prop('disabled', false)
+    })
+    .fail(function() {
+      alert("メッセージ送信に失敗しました");
+    });
   })
-  .fail(function() {
-    alert("メッセージ送信に失敗しました");
-});
-})
 });
