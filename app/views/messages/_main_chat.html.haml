@@ -5,7 +5,8 @@
         .main_chat__box__header__leftbox__group
           = @group.name
         .main_chat__box__header__leftbox__member
-          = @group.users.name
+          - @group.users.each do |t|
+            = t.name
       = link_to "Edit", edit_group_path(@group), class: 'main_chat__box__header__edit'
     .main_chat__box__content
       = render @messages 
